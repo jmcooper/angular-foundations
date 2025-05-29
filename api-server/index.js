@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 // use this to add a 1 second delay to all requests
-// app.use(function (req, res, next) { setTimeout(next, 3000); });
+// app.use(function (req, res, next) { setTimeout(next, 1000); });
 
 app.get("/api/products", (req, res) => {
   let products = [
