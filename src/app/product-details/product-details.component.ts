@@ -39,13 +39,13 @@ export class ProductDetailsComponent {
     return `/images/robot-parts/${product.imageName}`;
   }
 
-  addToCart(): void {
+  addToCart(product: IProduct, event: MouseEvent): void {
     // Avoid duplicate adds for demo purposes
-    if (!this.cart.includes(this.product.id)) {
-      this.cart.push(this.product.id);
+    if (!this.cart.includes(product.id)) {
+      this.cart.push(product.id);
     }
     this.inCart = true;
-    console.log(`Added ${this.product.name} to cart`);
+    console.log(`Added ${product.name} to cart`, event);
 
     // Auto-hide notification after 2 seconds
     setTimeout(() => {

@@ -9,7 +9,7 @@
   </div>
   <div class="price">
     <p>{{ product.price | currency }}</p>
-    <button class="cta" (click)="addToCart()">Buy</button>
+  <button class="cta" (click)="addToCart(product, $event)">Buy</button>
     @if (inCart) {
       <div class="cart-notification">
         <div class="notification-content">
