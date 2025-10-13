@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 interface IProduct {
   id: number;
@@ -13,7 +13,7 @@ interface IProduct {
 
 @Component({
   selector: 'bot-product-details',
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CurrencyPipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })
@@ -39,9 +39,17 @@ export class ProductDetailsComponent {
     return `/images/robot-parts/${product.imageName}`;
   }
 
-  addToCart(product: IProduct): void {
-    this.cart.push(product.id);
+  addToCart(): void {
+    // Avoid duplicate adds for demo purposes
+    if (!this.cart.includes(this.product.id)) {
+      this.cart.push(this.product.id);
+    }
     this.inCart = true;
     console.log(`Added ${this.product.name} to cart`);
+
+    // Auto-hide notification after 2 seconds
+    setTimeout(() => {
+      this.inCart = false;
+    }, 2000);
   }
 }
