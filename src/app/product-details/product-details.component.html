@@ -10,7 +10,7 @@
   <div class="price">
     <p>{{ product.price | currency }}</p>
     <button class="cta" (click)="addToCart(product)">Buy</button>
-    <div class="cart-notification" *ngIf="inCart" [@slideIn]>
+    <div class="cart-notification" *ngIf="inCart">
       <div class="notification-content">
         <i class="check-icon">✓</i>
         <span>Added to cart!</span>
