@@ -1,16 +1,16 @@
 <div class="product">
   <div class="details">
-    <img [src]="getImageUrl(product)" [alt]="product.name" />
+    <img [src]="getImageUrl(product())" [alt]="product().name" />
     <div>
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <p>Part Type: {{ product.category }}</p>
+      <h2>{{ product().name }}</h2>
+      <p>{{ product().description }}</p>
+      <p>Part Type: {{ product().category }}</p>
     </div>
   </div>
   <div class="price">
-    <p>{{ product.price | currency }}</p>
-    <button class="cta" (click)="addToCart(product, $event)">Buy</button>
-    @if (inCart) {
+    <p>{{ product().price | currency }}</p>
+    <button class="cta" (click)="addToCart(product(), $event)">Buy</button>
+    @if (inCart()) {
     <div class="cart-notification">
       <div class="notification-content">
         <i class="check-icon">✓</i>

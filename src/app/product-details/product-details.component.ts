@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, input } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 interface IProduct {
@@ -18,22 +18,9 @@ interface IProduct {
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
-  product: IProduct;
+  product = input.required<IProduct>();
   cart: number[] = [];
-  inCart = false;
-
-  constructor() {
-    this.product = {
-      id: 2,
-      description:
-        'A friendly robot head with two eyes and a smile -- great for domestic use.',
-      name: 'Friendly Bot',
-      imageName: 'head-friendly.png',
-      category: 'Heads',
-      price: 945.0,
-      discount: 0.2,
-    };
-  }
+  inCart = signal(false);
 
   getImageUrl(product: IProduct): string {
     return `/images/robot-parts/${product.imageName}`;
@@ -44,12 +31,13 @@ export class ProductDetailsComponent {
     if (!this.cart.includes(product.id)) {
       this.cart.push(product.id);
     }
-    this.inCart = true;
+    this.inCart.set(true);
     console.log(`Added ${product.name} to cart`, event);
 
     // Auto-hide notification after 2 seconds
     setTimeout(() => {
-      this.inCart = false;
+      this.inCart.set(false);
+      // this.inCart.update(p => !p);
     }, 2000);
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import products from '../products.json';
 
 @Component({
   selector: 'bot-catalog',
@@ -7,4 +8,6 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css',
 })
-export class CatalogComponent {}
+export class CatalogComponent {
+  products = products;
+}
