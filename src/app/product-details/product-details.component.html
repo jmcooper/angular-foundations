@@ -1,22 +1,25 @@
-<div class="product">
-  <div class="details">
-    <img [src]="getImageUrl(product())" [alt]="product().name" />
-    <div>
-      <h2>{{ product().name }}</h2>
-      <p>{{ product().description }}</p>
-      <p>Part Type: {{ product().category }}</p>
+<div class="details">
+  <img [src]="getImageUrl(product())" [alt]="product().name" />
+  <div>
+    <h2>{{ product().name }}</h2>
+    <p>{{ product().description }}</p>
+    <p>Part Type: {{ product().category }}</p>
+  </div>
+</div>
+<div class="price">
+  @if(product().discount > 0) {
+  <p [class.strikethrough]="product().discount > 0">{{ product().price | currency }}</p>
+  <p class="discount">{{ product().price * (1 - product().discount) | currency }} </p>
+  } @else {
+  <p>{{ product().price | currency }}</p>
+  }
+  <button class="cta" (click)="addToCart(product(), $event)">Buy</button>
+  @if (inCart()) {
+  <div class="cart-notification">
+    <div class="notification-content">
+      <i class="check-icon">✓</i>
+      <span>Added to cart!</span>
     </div>
   </div>
-  <div class="price">
-    <p>{{ product().price | currency }}</p>
-    <button class="cta" (click)="addToCart(product(), $event)">Buy</button>
-    @if (inCart()) {
-    <div class="cart-notification">
-      <div class="notification-content">
-        <i class="check-icon">✓</i>
-        <span>Added to cart!</span>
-      </div>
-    </div>
-    }
-  </div>
+  }
 </div>

@@ -1,4 +1,4 @@
-.product {
+:host {
   display: flex;
   justify-content: space-between;
   padding: 20px 25px;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.product img {
+:host img {
   width: 125px;
   margin-right: 25px;
 }
@@ -37,6 +37,11 @@
 .discount {
   margin-top: -15px;
   color: #d25ca1;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #777;
 }
 
 .cart-notification {
