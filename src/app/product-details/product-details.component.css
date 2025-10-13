@@ -38,3 +38,18 @@
   margin-top: -15px;
   color: #d25ca1;
 }
+
+.cart-notification {
+  background-color: #4bb543;
+  color: white;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  .notification-content {
+    .check-icon {
+      margin-right: .5rem;
+    }
+  }
+}

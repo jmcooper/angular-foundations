@@ -1,14 +1,20 @@
-    <div class="product">
-      <img src="/images/robot-parts/head-friendly.png" />
-      <div class="details">
-        <div>
-          <h2>Friendly Bot</h2>
-          <p>A friendly robot head with two eyes and a smile -- great for domestic use.</p>
-          <p>Part Type: Head</p>
-        </div>
-      </div>
-      <div class="price">
-        <p>$945.00</p>
-        <button class="cta">Buy</button>
+<div class="product">
+  <div class="details">
+    <img [src]="getImageUrl(product)" [alt]="product.name" />
+    <div>
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <p>Part Type: {{ product.category }}</p>
+    </div>
+  </div>
+  <div class="price">
+    <p>{{ product.price | currency }}</p>
+    <button class="cta" (click)="addToCart(product)">Buy</button>
+    <div class="cart-notification" *ngIf="inCart" [@slideIn]>
+      <div class="notification-content">
+        <i class="check-icon">✓</i>
+        <span>Added to cart!</span>
       </div>
     </div>
+  </div>
+</div>
